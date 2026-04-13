@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva de Aulas | Centro Educativo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app-shell">
+        <header class="main-header">
+            <div class="header-content">
+                <div class="logo-area">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    </div>
+                    <h1>Reserva de Aulas</h1>
+                </div>
+                <!-- Barra de Filtros Integrada -->
+                <div class="filters-container">
+                    <div id="aula-selector" class="multiselect-aulas">
+                        <!-- Checkboxes cargados por JS -->
+                        <span>Cargando aulas...</span>
+                    </div>
+                    <div class="occupied-toggle">
+                        <input type="checkbox" id="toggle-occupied">
+                        <label for="toggle-occupied">Ver ocupadas</label>
+                    </div>
+                </div>
+                <div class="user-area" id="user-info">
+                    <span class="user-name">...</span>
+                </div>
+            </div>
+        </header>
+
+        <nav class="week-nav">
+            <button id="prev-week" class="nav-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+            <div id="current-range" class="date-range">...</div>
+            <button id="next-week" class="nav-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+        </nav>
+
+        <main id="app-container">
+            <div class="loader-container">
+                <div class="loader"></div>
+                <p>Preparando el centro...</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal de Reserva -->
+    <div id="booking-modal" class="modal">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2 id="modal-title">Gestión de Reserva</h2>
+                <button class="close-modal">&times;</button>
+            </header>
+            <div class="modal-body">
+                <form id="booking-form">
+                    <div class="form-group info-only">
+                        <label>Aula y Horario</label>
+                        <p id="details-text">Cargando...</p>
+                    </div>
+
+                    <div id="aula-extras" class="extras-box">
+                        <span>🖥️ <span id="form-pcs">-</span> PCs</span> | <span>📝 <span id="form-obs">-</span></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Grupo y Asignatura</label>
+                        <input type="text" id="form-grupo-asignatura" placeholder="Ej: 4º ESO - Matemáticas" autocomplete="off">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="btn-save" class="btn-primary">Confirmar Reserva</button>
+                        <button type="button" id="btn-cancel-reservation" class="btn-danger hidden">Anular Reserva</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
